@@ -10,7 +10,7 @@ export default function getAccelerometerData() {
           // The permission has been granted
           window.addEventListener("devicemotion", (e) => {
             const { x, y, z } = e.acceleration;
-            document.getElementById("acc").innerHTML = `X: ${x}, Y: ${y}, Z: ${z}`;
+            document.getElementById("acc").textContent = `X: ${x}, Y: ${y}, Z: ${z}`;
             console.log(`X: ${x}, Y: ${y}, Z: ${z}`);
             // Use the x, y, and z values as needed
           });
