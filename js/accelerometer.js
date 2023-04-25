@@ -50,10 +50,24 @@ function startAccelerometer() {
       if (deltaX > threshold || deltaY > threshold || deltaZ > threshold) {
         document.getElementById("accelerometer-data").textContent =
           "Movement detected!";
-          // Play sound
-          var audio = new Audio('../sounds/alarm.mp3');
-          audio.play();
-
+        
+        // Send POST request to endpoint
+        fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            "subject": "ALERT!!!!",
+            "message": "YOUR BIKE IS BEING STOLEN!!!!!",
+            "recipient": "ggopalaiah@ucsd.edu",
+            "gps_lat": 37.7749,
+            "gps_long": -122.4194
+          })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
@@ -69,4 +83,3 @@ function startAccelerometer() {
     document.getElementById("accelerometer-data").textContent = "The Accelerometer API is not supported in this browser.";
   }
 }
-
