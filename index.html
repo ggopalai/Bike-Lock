@@ -67,11 +67,20 @@
         <button id="lock">Lock</button>
       </form>
       <p id="acc"></p>
+      <h1>Device Location Tracking</h1>
+	    <p id="coordinates"></p>
     </div>
     <script type="module">
       import getAccelerometerData from "/js/accelerometer.js";
+<<<<<<< HEAD
+=======
+      import getLocation from "/js/gps.js";
+>>>>>>> 00c6f28 (logging gps onto the screen)
       // Call the function to get the accelerometer data
       getAccelerometerData();
+
+      //Call the function to get the GPS data
+      getLocation();
     </script>
   </body>
 </html>
