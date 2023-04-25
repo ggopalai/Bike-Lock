@@ -67,9 +67,9 @@
         <button id="lock">Lock</button>
       </form>
       <h1>Motion Tracking</h1>
-        <p id="accelerometer-data"></p>
+      <p id="accelerometer-data"></p>
       <h1>Device Location Tracking</h1>
-	    <p id="coordinates"></p>
+      <p id="coordinates"></p>
     </div>
     <script type="module">
       import getAccelerometerData from "./js/accelerometer.js";
@@ -80,5 +80,6 @@
       //Call the function to get the GPS data
       getLocation();
     </script>
+    <script src="./js/passcode_handler.js" type="module"></script>
   </body>
 </html>
