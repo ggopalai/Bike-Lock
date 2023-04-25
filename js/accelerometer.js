@@ -1,3 +1,5 @@
+const threshold = 0.5; // set threshold for movement detection
+
 export default function getAccelerometerData() {
   // Check for support for the Permissions API
   if ("permissions" in navigator) {
@@ -36,15 +38,24 @@ function startAccelerometer() {
   // Check for support for the Accelerometer API
   if ("Accelerometer" in window) {
     var accelerometer = new Accelerometer({ frequency: 60 });
+    var lastX, lastY, lastZ;
     accelerometer.addEventListener("reading", function () {
-      // Display the X, Y, and Z coordinates
-      document.getElementById("accelerometer-data").textContent =
-        "X: " +
-        accelerometer.x.toFixed(2) +
-        ", Y: " +
-        accelerometer.y.toFixed(2) +
-        ", Z: " +
-        accelerometer.z.toFixed(2);
+      // Calculate the difference between the current and last accelerometer readings
+      var deltaX = Math.abs(lastX - accelerometer.x);
+      var deltaY = Math.abs(lastY - accelerometer.y);
+      var deltaZ = Math.abs(lastZ - accelerometer.z);
+      // Check if the difference exceeds the threshold
+      if (deltaX > threshold || deltaY > threshold || deltaZ > threshold) {
+        document.getElementById("accelerometer-data").textContent =
+          "Movement detected!";
+      } else {
+        document.getElementById("accelerometer-data").textContent =
+          "No movement detected.";
+      }
+      // Update the last accelerometer readings
+      lastX = accelerometer.x;
+      lastY = accelerometer.y;
+      lastZ = accelerometer.z;
     });
     accelerometer.start();
   } else {
