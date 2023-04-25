@@ -37,6 +37,16 @@ export default function getAccelerometerData() {
 function startAccelerometer() {
   // Check for support for the Accelerometer API
   if ("Accelerometer" in window) {
+
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)(); // create audio context
+    var oscillator = audioCtx.createOscillator(); // create oscillator
+    oscillator.type = "sine"; // set oscillator type to sine
+    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // set frequency of the oscillator to 440Hz
+    var gainNode = audioCtx.createGain(); // create gain node
+    gainNode.gain.setValueAtTime(0, audioCtx.currentTime); // set initial gain to 0
+    oscillator.connect(gainNode); // connect oscillator to gain node
+    gainNode.connect(audioCtx.destination); // connect gain node to audio context destination
+
     var accelerometer = new Accelerometer({ frequency: 60 });
     var lastX, lastY, lastZ;
     accelerometer.addEventListener("reading", function () {
@@ -48,6 +58,11 @@ function startAccelerometer() {
       if (deltaX > threshold || deltaY > threshold || deltaZ > threshold) {
         document.getElementById("accelerometer-data").textContent =
           "Movement detected!";
+          // Play sound
+          gainNode.gain.linearRampToValueAtTime(1, audioCtx.currentTime + 0.01); // ramp up gain to 1 in 0.01 seconds
+          gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5); // ramp down gain to 0 in 0.5 seconds
+          oscillator.start(); // start oscillator
+          setTimeout(function() { oscillator.stop(); }, 500); // stop oscillator after 500ms
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
@@ -63,3 +78,4 @@ function startAccelerometer() {
     document.getElementById("accelerometer-data").textContent = "The Accelerometer API is not supported in this browser.";
   }
 }
+
