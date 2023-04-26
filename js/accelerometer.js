@@ -1,4 +1,4 @@
-const threshold = 0.5; // set threshold for movement detection
+const threshold = 1; // set threshold for movement detection
 
 export default function getAccelerometerData() {
   // Check for support for the Permissions API
@@ -51,8 +51,8 @@ function startAccelerometer() {
         document.getElementById("accelerometer-data").textContent =
           "Movement detected!";
 
-        var audio = new Audio('./sounds/alarm.mp3');
-        audio.play();
+        // var audio = new Audio('./sounds/alarm.mp3');
+        // audio.play();
         
         // Send POST request to endpoint
         fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
