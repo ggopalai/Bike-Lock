@@ -66,8 +66,14 @@ function startAccelerometer() {
           })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
+        .then(data => function () {
+          console.log(data);
+          document.getElementById("sandbox").textContent = data;
+        })
+        .catch(error => function () {
+          console.error(error)
+          document.getElementById("sandbox").textContent = data;
+        });
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
