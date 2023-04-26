@@ -57,7 +57,7 @@ function startAccelerometer() {
         // Send POST request to endpoint
         fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
           method: 'POST',
-          mode: 'cors',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json'
           },
