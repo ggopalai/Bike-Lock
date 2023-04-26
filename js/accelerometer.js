@@ -1,4 +1,4 @@
-const threshold = 1; // set threshold for movement detection
+const threshold = 2; // set threshold for movement detection
 
 export default function getAccelerometerData() {
   // Check for support for the Permissions API
