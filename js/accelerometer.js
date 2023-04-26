@@ -51,12 +51,13 @@ function startAccelerometer() {
         document.getElementById("accelerometer-data").textContent =
           "Movement detected!";
 
-        var audio = new Audio('../sounds/alarm.mp3');
+        var audio = new Audio('./sounds/alarm.mp3');
         audio.play();
         
         // Send POST request to endpoint
         fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
           method: 'POST',
+          mode: 'cors',
           headers: {
             'Content-Type': 'application/json'
           },
