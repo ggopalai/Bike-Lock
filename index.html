@@ -51,6 +51,15 @@
         background-color: #3e8e41;
       }
     </style>
+    <link rel="manifest" href="./manifest.json" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker &&
+            navigator.serviceWorker.register("./cache.js");
+        });
+      }
+    </script>
   </head>
   <body>
     <div class="container">
