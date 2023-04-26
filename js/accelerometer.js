@@ -33,7 +33,6 @@ export default function getAccelerometerData() {
   }
 }
 
-// Function to start detecting accelerometer data
 function startAccelerometer() {
   // Check for support for the Accelerometer API
   if ("Accelerometer" in window) {
@@ -51,37 +50,53 @@ function startAccelerometer() {
         document.getElementById("accelerometer-data").textContent =
           "Movement detected!";
 
-        var audio = new Audio('./sounds/alarm.mp3');
-        audio.play();
+        // var audio = new Audio('./sounds/alarm.mp3');
+        // audio.play();
         
-        // Send POST request to endpoint
+        // Send OPTIONS request to endpoint
         fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
-          method: 'POST',
+          method: 'OPTIONS',
           mode: 'cors',
           headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            "subject": "ALERT!!!!",
-            "message": "YOUR BIKE IS BEING STOLEN!!!!!",
-            "recipient": "ggopalaiah@ucsd.edu",
-            "gps_lat": 37.7749,
-            "gps_long": -122.4194
+            'Access-Control-Request-Method': 'POST',
+            'Access-Control-Request-Headers': 'content-type'
+          }
+        })
+        .then(response => {
+          // Send POST request to endpoint
+          fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              "subject": "ALERT!!!!",
+              "message": "YOUR BIKE IS BEING STOLEN!!!!!",
+              "recipient": "ggopalaiah@ucsd.edu",
+              "gps_lat": 37.7749,
+              "gps_long": -122.4194
+            })
           })
+          .then(response => response.json())
+          .then(data => function () {
+            console.log(data);
+            document.getElementById("sandbox").textContent = data;
+          })
+          .catch(error => function () {
+            console.error(error)
+            document.getElementById("sandbox").textContent = data;
+          });
         })
-        .then(response => response.json())
-        .then(data => function () {
-          console.log(data);
-          document.getElementById("sandbox").textContent = data;
-        })
-        .catch(error => function () {
-          console.error(error)
-          document.getElementById("sandbox").textContent = data;
+        .catch(error => {
+          console.error(error);
         });
+        
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
       }
+      
       // Update the last accelerometer readings
       lastX = accelerometer.x;
       lastY = accelerometer.y;
@@ -93,3 +108,4 @@ function startAccelerometer() {
     document.getElementById("accelerometer-data").textContent = "The Accelerometer API is not supported in this browser.";
   }
 }
+
