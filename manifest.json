@@ -1,0 +1,16 @@
+{
+	"name": "Stop the Steal",
+	"short_name": "STS",
+	"display": "standalone",
+	"start_url": "./?utm_source=pwa_install",
+	"scope": ".",
+	"theme_color": "#000",
+	"background_color": "#000",
+	"icons":[
+        {
+            "src": "android-chrome-36x36.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        }
+	]
+}
