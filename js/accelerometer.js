@@ -49,7 +49,12 @@ function startAccelerometer() {
       // Check if the difference exceeds the threshold
       if (deltaX > threshold || deltaY > threshold || deltaZ > threshold) {
         document.getElementById("accelerometer-data").textContent =
-          "Movement detected!";
+          "Movement detected! - X: " +
+          accelerometer.x.toFixed(2) +
+          ", Y: " +
+          accelerometer.y.toFixed(2) +
+          ", Z: " +
+          accelerometer.z.toFixed(2);
 
         // var audio = new Audio('./sounds/alarm.mp3');
         // audio.play();
