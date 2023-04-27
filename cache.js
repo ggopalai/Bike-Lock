@@ -1,4 +1,4 @@
-const cacheName = "cache3"; // Change value to force update
+const cacheName = "cache4"; // Change value to force update
 
 self.addEventListener("install", (event) => {
   // Kick out the old service worker
@@ -7,13 +7,14 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheName).then((cache) => {
       return cache.addAll([
-        "/",
-        "android-chrome-36x36.png", // Favicon, Android Chrome M39+ with 0.75 screen density
-        "android-chrome-144x144.png", // Favicon, Android Chrome M39+ with 0.75 screen density
-        "/js/accelerometer.js",
-        "/js/gps.js",
-        "/js/passcode_handler.js",
-        "manifest.json",
+        "./",
+        "./index.html",
+        "./android-chrome-36x36.png", // Favicon, Android Chrome M39+ with 0.75 screen density
+        "./android-chrome-144x144.png", // Favicon, Android Chrome M39+ with 0.75 screen density
+        "./js/accelerometer.js",
+        "./js/gps.js",
+        "./js/passcode_handler.js",
+        "./manifest.json",
       ]);
     })
   );
