@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Lock and Passcode</title>
+    <title>Unlock with Passcode</title>
     <style>
       :root {
         --primary-color: #4caf50;
@@ -27,8 +27,7 @@
         font-weight: bold;
       }
 
-      input[type="number"],
-      input[type="email"] {
+      input[type="number"] {
         padding: 10px;
         border: 2px solid var(--primary-color);
         border-radius: 5px;
@@ -64,16 +63,8 @@
   </head>
   <body>
     <div class="container">
-      <h1>Lock and Passcode</h1>
+      <h1>Unlock with Passcode</h1>
       <form>
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        />
         <label for="passcode">Passcode</label>
         <input
           type="number"
@@ -82,15 +73,15 @@
           placeholder="Enter your passcode"
           required
         />
-        <button id="lock">Lock</button>
+        <button id="lock">Unlock</button>
       </form>
-      <!-- <h1>Motion Tracking</h1>
+      <h1>Motion Tracking</h1>
       <p id="accelerometer-data"></p>
       <h1>Device Location Tracking</h1>
       <p id="coordinates"></p>
-      <p id="sandbox"></p> -->
+      <p id="sandbox"></p>
     </div>
-    <!-- <script type="module">
+    <script type="module">
       import getAccelerometerData from "./js/accelerometer.js";
       import getLocation from "./js/gps.js";
       // Call the function to get the accelerometer data
@@ -98,7 +89,7 @@
 
       //Call the function to get the GPS data
       getLocation();
-    </script> -->
-    <script src="./js/passcode_handler.js" type="module"></script>
+    </script>
+    <script src="./js/unlock_handler.js" type="module"></script>
   </body>
 </html>

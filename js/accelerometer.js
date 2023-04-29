@@ -1,4 +1,4 @@
-const threshold = 2; // set threshold for movement detection
+const threshold = 7; // set threshold for movement detection
 
 export default function getAccelerometerData() {
   // Check for support for the Permissions API
@@ -48,6 +48,9 @@ function startAccelerometer() {
       var deltaZ = Math.abs(lastZ - accelerometer.z);
       // Check if the difference exceeds the threshold
       if (deltaX > threshold || deltaY > threshold || deltaZ > threshold) {
+        const recipient = localStorage.getItem('email');
+        console.log(recipient);
+
         document.getElementById("accelerometer-data").textContent =
           "Movement detected! - X: " +
           accelerometer.x.toFixed(2) +
@@ -69,7 +72,7 @@ function startAccelerometer() {
           body: JSON.stringify({
             "subject": "ALERT!!!!",
             "message": "YOUR BIKE IS BEING STOLEN!!!!!",
-            "recipient": "ggopalaiah@ucsd.edu",
+            "recipient": recipient,
             "gps_lat": 37.7749,
             "gps_long": -122.4194
           })
