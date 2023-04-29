@@ -8,12 +8,17 @@
 	"background_color": "#000",
 	"icons":[
         {
-            "src": "android-chrome-36x36.png",
+            "src": "stop_the_steal-36x36.png",
             "sizes": "36x36",
             "type": "image/png"
         },
         {
-            "src": "android-chrome-144x144.png",
+            "src": "stop_the_steal-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "stop_the_steal-144x144.png",
             "sizes": "144x144",
             "type": "image/png"
         }
