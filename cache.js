@@ -9,6 +9,7 @@ self.addEventListener("install", (event) => {
       return cache.addAll([
         "./",
         "./index.html",
+        "./locked.html",
         "./android-chrome-36x36.png", // Favicon, Android Chrome M39+ with 0.75 screen density
         "./android-chrome-144x144.png", // Favicon, Android Chrome M39+ with 0.75 screen density
         "./js/accelerometer.js",
