@@ -1,3 +1,5 @@
+import getLocation from "./gps.js";
+
 const threshold = 7; // set threshold for movement detection
 
 export default function getAccelerometerData() {
@@ -38,6 +40,17 @@ function startAccelerometer() {
   // Check for support for the Accelerometer API
   if ("Accelerometer" in window) {
     
+    var lat, long;
+    getLocation()
+    .then(location => {
+      lat = location.latitude;
+      long = location.longitude;
+      console.log(location.latitude, location.longitude);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    
     // Create an accelerometer object
     var accelerometer = new Accelerometer({ frequency: 60 });
     var lastX, lastY, lastZ;
@@ -73,8 +86,8 @@ function startAccelerometer() {
             "subject": "ALERT!!!!",
             "message": "YOUR BIKE IS BEING STOLEN!!!!!",
             "recipient": recipient,
-            "gps_lat": 37.7749,
-            "gps_long": -122.4194
+            "gps_lat": lat,
+            "gps_long": long
           })
         })
         .then(response => response.json())

@@ -87,8 +87,13 @@
       // Call the function to get the accelerometer data
       getAccelerometerData();
 
-      //Call the function to get the GPS data
-      getLocation();
+      //Get the GPS data
+      getLocation().then((coordinates) => {
+        const { latitude, longitude } = coordinates;
+        document.getElementById("coordinates").innerHTML = `Latitude: ${latitude} <br> Longitude: ${longitude}`;
+      }).catch((error) => {
+        document.getElementById("coordinates").innerHTML = error;
+      })
     </script>
     <script src="./js/unlock_handler.js" type="module"></script>
   </body>
