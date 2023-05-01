@@ -1,4 +1,4 @@
-import getLocation from "./gps";
+import getLocation from "./gps.js";
 
 const threshold = 7; // set threshold for movement detection
 
