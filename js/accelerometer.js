@@ -72,7 +72,7 @@ function startAccelerometer() {
           ", Z: " +
           accelerometer.z.toFixed(2);
 
-        var audio = new Audio('./audio/ucsdfight.mp3');
+        var audio = new Audio('./sounds/ucsdfight.mp3');
         var loopCount = 0;
         
         audio.addEventListener('ended', function() {
