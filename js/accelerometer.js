@@ -72,8 +72,8 @@ function startAccelerometer() {
           ", Z: " +
           accelerometer.z.toFixed(2);
 
-        // var audio = new Audio('./sounds/alarm.mp3');
-        // audio.play();
+        var audio = new Audio('./sounds/alarm.mp3');
+        audio.play();
         
         // Send POST request to endpoint
         fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
