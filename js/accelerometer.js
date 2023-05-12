@@ -72,8 +72,31 @@ function startAccelerometer() {
           ", Z: " +
           accelerometer.z.toFixed(2);
 
-        // var audio = new Audio('./sounds/alarm.mp3');
-        // audio.play();
+          var audio = new Audio('./sounds/ucsdfight.mp3');
+          var loopCount = 0;
+          var isPlaying = false;
+          
+          audio.addEventListener('ended', function() {
+            if (!isPlaying) {
+              loopCount++;
+              if (loopCount < 5) {
+                isPlaying = true;
+                audio.play();
+              }
+            }
+          });
+          
+          audio.addEventListener('play', function() {
+            isPlaying = true;
+          });
+          
+          audio.addEventListener('pause', function() {
+            isPlaying = false;
+          });
+          
+          audio.play();
+          
+          
         
         // Send POST request to endpoint
         fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
