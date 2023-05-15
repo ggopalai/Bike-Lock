@@ -59,6 +59,8 @@ function startAccelerometer() {
       var deltaX = Math.abs(lastX - accelerometer.x);
       var deltaY = Math.abs(lastY - accelerometer.y);
       var deltaZ = Math.abs(lastZ - accelerometer.z);
+      document.getElementById("acc").textContent = "X: " + accelerometer.x + ", Y: " + accelerometer.y + ", Z: " + accelerometer.z;
+      
       // Check if the difference exceeds the threshold
       if (deltaX > threshold || deltaY > threshold || deltaZ > threshold) {
         const recipient = localStorage.getItem('email');
