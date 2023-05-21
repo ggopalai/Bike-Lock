@@ -127,11 +127,9 @@ function startAccelerometer() {
                 .then(response => response.json())
                 .then(data => {
                   console.log(data);
-                  document.getElementById("sandbox").textContent = data;
                 })
                 .catch(error => {
-                  console.error(error)
-                  document.getElementById("sandbox").textContent = data;
+                  console.error(error);
                 });
 
               // Cleanup: Stop video stream
