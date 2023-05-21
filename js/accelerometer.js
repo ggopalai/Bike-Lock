@@ -35,22 +35,22 @@ export default function getAccelerometerData() {
   }
 }
 
-// Function to start detecting accelerometer data
+// Function to start detecting accelerometer data and capture a photo
 function startAccelerometer() {
-  // Check for support for the Accelerometer API
-  if ("Accelerometer" in window) {
-    
+  // Check for support for the Accelerometer API and device camera
+  if ("Accelerometer" in window && "getUserMedia" in navigator.mediaDevices) {
+
     var lat, long;
     getLocation()
-    .then(location => {
-      lat = location.latitude;
-      long = location.longitude;
-      console.log(location.latitude, location.longitude);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-    
+      .then(location => {
+        lat = location.latitude;
+        long = location.longitude;
+        console.log(location.latitude, location.longitude);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
     // Create an accelerometer object
     var accelerometer = new Accelerometer({ frequency: 60 });
     var lastX, lastY, lastZ;
@@ -72,56 +72,79 @@ function startAccelerometer() {
           ", Z: " +
           accelerometer.z.toFixed(2);
 
-          var audio = new Audio('./sounds/ucsdfight.mp3');
-          var loopCount = 0;
-          var isPlaying = false;
-          
-          audio.addEventListener('ended', function() {
-            if (!isPlaying) {
-              loopCount++;
-              if (loopCount < 5) {
-                isPlaying = true;
-                audio.play();
-              }
+        var audio = new Audio('./sounds/ucsdfight.mp3');
+        var loopCount = 0;
+        var isPlaying = false;
+
+        audio.addEventListener('ended', function () {
+          if (!isPlaying) {
+            loopCount++;
+            if (loopCount < 5) {
+              isPlaying = true;
+              audio.play();
             }
-          });
-          
-          audio.addEventListener('play', function() {
-            isPlaying = true;
-          });
-          
-          audio.addEventListener('pause', function() {
-            isPlaying = false;
-          });
-          
-          audio.play();
-          
-          
-        
-        // Send POST request to endpoint
-        fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            "subject": "ALERT!!!!",
-            "message": "YOUR BIKE IS BEING STOLEN!!!!!",
-            "recipient": recipient,
-            "gps_lat": lat,
-            "gps_long": long
-          })
-        })
-        .then(response => response.json())
-        .then(data => function () {
-          console.log(data);
-          document.getElementById("sandbox").textContent = data;
-        })
-        .catch(error => function () {
-          console.error(error)
-          document.getElementById("sandbox").textContent = data;
+          }
         });
+
+        audio.addEventListener('play', function () {
+          isPlaying = true;
+        });
+
+        audio.addEventListener('pause', function () {
+          isPlaying = false;
+        });
+
+        audio.play();
+
+        // Capture a photo using the device camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            var video = document.createElement('video');
+            video.srcObject = stream;
+            video.onloadedmetadata = function () {
+              var canvas = document.createElement('canvas');
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+              canvas.getContext('2d').drawImage(video, 0, 0);
+              var photoData = canvas.toDataURL('image/jpeg');
+
+              // Send POST request to endpoint with the captured photo
+              fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  "subject": "ALERT!!!!",
+                  "message": "YOUR BIKE IS BEING STOLEN!!!!!",
+                  "recipient": recipient,
+                  "gps_lat": lat,
+                  "gps_long": long,
+                  "photoData": photoData
+                })
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data);
+                  document.getElementById("sandbox").textContent = data;
+                })
+                .catch(error => {
+                  console.error(error)
+                  document.getElementById("sandbox").textContent = data;
+                });
+
+              // Cleanup: Stop video stream
+              video.srcObject.getTracks().forEach(function (track) {
+                track.stop();
+              });
+              video.remove();
+            };
+          })
+          .catch(function (error) {
+            console.error('Camera access denied or not supported: ', error);
+          });
+
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
@@ -131,9 +154,11 @@ function startAccelerometer() {
       lastY = accelerometer.y;
       lastZ = accelerometer.z;
     });
+
     accelerometer.start();
+
   } else {
-    // Accelerometer API not supported
-    document.getElementById("accelerometer-data").textContent = "The Accelerometer API is not supported in this browser.";
+    // Accelerometer API or camera not supported
+    document.getElementById("accelerometer-data").textContent = "The Accelerometer API or device camera is not supported in this browser.";
   }
 }
