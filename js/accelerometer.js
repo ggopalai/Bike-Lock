@@ -96,52 +96,56 @@ function startAccelerometer() {
 
         audio.play();
 
-        // Capture a photo using the device camera
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
-          .then(function (stream) {
-            var video = document.createElement('video');
-            video.srcObject = stream;
-            video.onloadedmetadata = function () {
-              var canvas = document.createElement('canvas');
-              canvas.width = video.videoWidth;
-              canvas.height = video.videoHeight;
-              canvas.getContext('2d').drawImage(video, 0, 0);
-              var photoData = canvas.toDataURL('image/jpeg');
+        // Delay of 5 seconds before capturing the photo
+        setTimeout(function() {
+          // Capture a photo using the device camera
+          navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+            .then(function (stream) {
+              var video = document.createElement('video');
+              video.srcObject = stream;
+              video.onloadedmetadata = function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0);
+                var photoData = canvas.toDataURL('image/jpeg');
 
-              // Send POST request to endpoint with the captured photo
-              fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  "subject": "ALERT!!!!",
-                  "message": "YOUR BIKE IS BEING STOLEN!!!!!",
-                  "recipient": recipient,
-                  "gps_lat": lat,
-                  "gps_long": long,
-                  "photoData": photoData
+                // Send POST request to endpoint with the captured photo
+                fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
+                  method: 'POST',
+                  mode: 'no-cors',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    "subject": "ALERT!!!!",
+                    "message": "YOUR BIKE IS BEING STOLEN!!!!!",
+                    "recipient": recipient,
+                    "gps_lat": lat,
+                    "gps_long": long,
+                    "photoData": photoData
+                  })
                 })
-              })
-                .then(response => response.json())
-                .then(data => {
-                  console.log(data);
-                })
-                .catch(error => {
-                  console.error(error);
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log(data);
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  });
+
+                // Cleanup: Stop video stream
+                video.srcObject.getTracks().forEach(function (track) {
+                  track.stop();
                 });
+                video.remove();
+              };
+            })
+            .catch(function (error) {
+              console.error('Camera access denied or not supported: ', error);
+            });
+        }, 3000); // 5 seconds delay
 
-              // Cleanup: Stop video stream
-              video.srcObject.getTracks().forEach(function (track) {
-                track.stop();
-              });
-              video.remove();
-            };
-          })
-          .catch(function (error) {
-            console.error('Camera access denied or not supported: ', error);
-          });
 
       } else {
         document.getElementById("accelerometer-data").textContent =
