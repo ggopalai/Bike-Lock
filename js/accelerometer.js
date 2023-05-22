@@ -97,7 +97,7 @@ function startAccelerometer() {
         audio.play();
 
         // Capture a photo using the device camera
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
           .then(function (stream) {
             var video = document.createElement('video');
             video.srcObject = stream;
