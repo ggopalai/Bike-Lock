@@ -54,7 +54,7 @@ function sendEventsToAll(email) {
     console.log(client);
     if (client.email == email) {
       client.response.write(
-        `data: {${email}: ${JSON.stringify(bikes[email])}}\n\n`
+        `data: { ${JSON.stringify(email)} : ${JSON.stringify(bikes[email])}}\n\n`
       );
     }
   });
