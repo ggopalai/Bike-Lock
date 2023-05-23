@@ -7,7 +7,7 @@ const cls = document.getElementById('cls');
 
 function toggleDiv() {
     let stateValue = localStorage.getItem('state');
-    if (stateValue) {
+    if (stateValue=='1') {
         displayStatus.textContent = 'The device is locked.';
         postregLockedDiv.style.display = 'block';
     } else {
@@ -23,17 +23,20 @@ if ('state' in localStorage) {
     console.log('State:', state);
 } else {
     state = 0;
-    localStorage.setItem('state', state);
+    localStorage.setItem('state', 0);
+    displayStatus.textContent = 'The device is unlocked.';
+    postregLockedDiv.style.display = 'none';
 }
 
-// if (state == 0) {
-//     displayStatus.textContent = 'The device is unlocked.';
-//     postregLockedDiv.style.display = 'none';
-// }
-// else {
-//     displayStatus.textContent = 'The device is locked.';
-//     postregLockedDiv.style.display = 'block';
-// }
+toggleDiv();
+if (state == '0') {
+    displayStatus.textContent = 'The device is unlocked.';
+    postregLockedDiv.style.display = 'none';
+}
+else {
+    displayStatus.textContent = 'The device is locked.';
+    postregLockedDiv.style.display = 'block';
+}
 
 // chose what to display based on whether email exists in local storage
 if ('email' in localStorage) {
@@ -58,7 +61,9 @@ regBtn.addEventListener('click', function() {
     localStorage.setItem('email', email);
     preregDiv.style.display = 'none';
     postregDiv.style.display = 'block';
+    postregLockedDiv.style.display = 'none';
     toggleDiv();
+    window.location.reload();
 });
 
 // utility, remove after testing
