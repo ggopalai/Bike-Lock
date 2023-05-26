@@ -28,7 +28,7 @@ function eventsHandler(request, response, next) {
   response.writeHead(200, headers);
   const email_id = request.query.email;
 
-  const data = `data: {${email_id}: ${JSON.stringify(bikes[email_id])}}\n\n`;
+  const data = `data: {${JSON.stringify(email_id)}: ${JSON.stringify(bikes[email_id])}}\n\n`;
   console.log(data);
   response.write(data);
 

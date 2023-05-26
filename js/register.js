@@ -8,10 +8,12 @@ const cls = document.getElementById('cls');
 function toggleDiv() {
     let stateValue = localStorage.getItem('state');
     if (stateValue=='1') {
-        displayStatus.textContent = 'The device is locked.';
+        console.log("state is true");
+        displayStatus.textContent = 'BIKE LOCKED';
         postregLockedDiv.style.display = 'block';
     } else {
-        displayStatus.textContent = 'The device is unlocked.';
+        console.log("state is false");
+        displayStatus.textContent = 'Bike is Unlocked';
         postregLockedDiv.style.display = 'none';
     }
 }
@@ -24,17 +26,19 @@ if ('state' in localStorage) {
 } else {
     state = 0;
     localStorage.setItem('state', 0);
-    displayStatus.textContent = 'The device is unlocked.';
+    displayStatus.textContent = 'Bike is Unlocked';
     postregLockedDiv.style.display = 'none';
 }
 
 toggleDiv();
 if (state == '0') {
-    displayStatus.textContent = 'The device is unlocked.';
+    console.log("state is false");
+    displayStatus.textContent = 'Bike is Unlocked';
     postregLockedDiv.style.display = 'none';
 }
 else {
-    displayStatus.textContent = 'The device is locked.';
+    console.log("state is true");
+    displayStatus.textContent = 'BIKE LOCKED';
     postregLockedDiv.style.display = 'block';
 }
 
