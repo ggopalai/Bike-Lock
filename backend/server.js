@@ -19,7 +19,6 @@ app.listen(PORT, () => {
 // ...
 
 function eventsHandler(request, response, next) {
-  console.log("eventsHandler");
   const headers = {
     "Content-Type": "text/event-stream",
     Connection: "keep-alive",
@@ -71,7 +70,6 @@ async function addBike(request, response, next) {
 app.post("/api", addBike);
 
 async function updateBike(request, response, next) {
-  console.log("change state of the bike");
   const state = request.body.state;
   const email = request.params.email;
   console.log(email);
