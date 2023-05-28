@@ -87,7 +87,10 @@ function startAccelerometer() {
           });
           
           audio.addEventListener('play', function() {
-            isPlaying = true;
+            let state = localStorage.getItem("state");
+            if (state=="1") {
+              isPlaying = true;
+            }   
           });
           
           audio.addEventListener('pause', function() {
