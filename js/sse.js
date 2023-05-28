@@ -1,8 +1,8 @@
 let email = localStorage.getItem('email');
 const postregLockedDiv = document.getElementById('postreg-locked');
 const displayStatus = document.getElementById('status');
-const url = //"https://kastner.1921682.xyz/api?email=" + email;
-"http://ec2-50-18-86-135.us-west-1.compute.amazonaws.com:3000/api?email=" + email; 
+const url = "https://kastner.1921682.xyz/api?email=" + email;
+//"http://ec2-50-18-86-135.us-west-1.compute.amazonaws.com:3000/api?email=" + email; 
 //"http://localhost:3000/api?email="+email;
 console.log(url);
 
