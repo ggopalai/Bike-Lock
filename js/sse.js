@@ -21,12 +21,15 @@ evtSource.onmessage = (event) => {
     console.log("Error encountered",e); 
   }
   let newState = data[email];
+  console.log(newState);
   if (newState=="false") {
+    console.log("bike is locked");
     localStorage.setItem("state", 0);
     displayStatus.textContent = 'Bike is Unlocked';
     postregLockedDiv.style.display = 'none';
   }
   else if (newState=="true") {
+    console.log("locked");
     localStorage.setItem("state", 1);
     displayStatus.textContent = 'BIKE LOCKED';
     postregLockedDiv.style.display = 'block';
