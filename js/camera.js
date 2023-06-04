@@ -75,10 +75,6 @@ captureButton.addEventListener('click', () => {
                 console.log('Response:', data);
                 document.getElementById('sandbox').textContent = data;
             })
-            .catch((error) => {
-                console.error('Error:', error);
-                document.getElementById('sandbox').textContent = data;
-            });
         } catch (e) {
             console.log('Exception:', e);
         }
