@@ -5,14 +5,14 @@
     <title>Lock and Passcode</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="manifest" href="./manifest.json" />
-    <script>
+    <!-- <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker &&
             navigator.serviceWorker.register("./cache.js");
         });
       }
-    </script>
+    </script> -->
   </head>
   <body>
     <div class="container">
@@ -29,6 +29,11 @@
           <h1>Device Location Tracking</h1>
           <p id="coordinates"></p>
           <p id="sandbox"></p>
+          <video id="videoElement" autoplay></video>
+          <!-- <button id="captureButton">Capture Photo</button> -->
+          <br>
+          <br>
+          <canvas id="canvasElement" width="640" height="480"></canvas>
         </div>
       </div>
       <button id="cls">Clear</button>
@@ -36,6 +41,7 @@
     
     <script src="./js/register.js" type="module"></script>
     <script src="./js/sse.js" type="module"></script>
+    <script src="./js/camera.js" type="module"></script>
     <script type="module">
       import getAccelerometerData from "./js/accelerometer.js";
       import getLocation from "./js/gps.js";
