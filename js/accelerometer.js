@@ -133,11 +133,11 @@ function startAccelerometer() {
           reader.onloadend = () => {
           // Get the compressed image data as base64 string
           const compressedPhotoData = reader.result;
-
-           
-      //         reader.readAsDataURL(blob);
-      //     }, 'image/jpeg', 0.7); // Specify the image format and compression quality (0.7 means 70% quality)
-      // });
+          const recipient = recipient;
+          const subject = 'ALERT!!!!';
+          const message = 'YOUR BIKE IS BEING STOLEN!!!!!';
+          const gps_lat = lat;
+          const gps_long = long;
         
         // Send POST request to endpoint
         fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
@@ -147,27 +147,26 @@ function startAccelerometer() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "subject": "ALERT!!!!",
-            "message": "YOUR BIKE IS BEING STOLEN!!!!!",
-            "recipient": recipient,
-            "gps_lat": lat,
-            "gps_long": long,
+            subject,
+            message,
+            recipient,
+            gps_lat,
+            gps_long,
             photoData: compressedPhotoData,
-          })
+        }),
         })
         .then(response => response.json())
         .then(data => function () {
           console.log(data);
           document.getElementById("sandbox").textContent = data;
         })
-        .catch(error => function () {
-          console.error(error)
-          document.getElementById("sandbox").textContent = data;
-        });
+        // .catch(error => function () {
+        //   console.error(error)
+        //   document.getElementById("sandbox").textContent = data;
+        // });
+      };
         reader.readAsDataURL(blob);
-        }, 
-        reader.readAsDataURL(blob);
-        }, 'image/jpeg', 0.7); // Specify the image format and compression quality (0.7 means 70% quality)
+      }, 'image/jpeg', 0.7); // Specify the image format and compression quality (0.7 means 70% quality)
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
