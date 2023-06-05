@@ -1,4 +1,6 @@
 import getLocation from "./gps.js";
+const video = document.getElementById('videoElement');
+const canvas = document.getElementById('canvasElement');
 
 const threshold = 7; // set threshold for movement detection
 
