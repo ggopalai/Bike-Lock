@@ -1,6 +1,6 @@
 const video = document.getElementById('videoElement');
 const canvas = document.getElementById('canvasElement');
-const captureButton = document.getElementById('captureButton');
+// const captureButton = document.getElementById('captureButton');
 
 navigator.mediaDevices.getUserMedia({ video: true })
   .then((stream) => {
@@ -10,10 +10,10 @@ navigator.mediaDevices.getUserMedia({ video: true })
     console.error('Error accessing webcam:', error);
   });
 
-  captureButton.addEventListener('click', () => {
-    console.log("called sendMail");
-    sendMail("123","123");
-  });
+//   captureButton.addEventListener('click', () => {
+//     console.log("called sendMail");
+//     sendMail("123","123");
+//   });
 
 // captureButton.addEventListener('click', () => {
 //     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -90,7 +90,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
 
 export default function sendMail (gps_lat, gps_long) {
     console.log("in sendMail",gps_lat,gps_long);
-    alert("sending mail....");
+    alert("Sending email to the owner....");
 
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     
