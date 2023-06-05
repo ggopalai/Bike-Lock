@@ -1,4 +1,8 @@
 import getLocation from "./gps.js";
+import sendMail from "./camera.js";
+// const video = document.getElementById('videoElement');
+// const canvas = document.getElementById('canvasElement');
+// const captureButton = document.getElementById('captureButton');
 
 const threshold = 7; // set threshold for movement detection
 
@@ -98,33 +102,10 @@ function startAccelerometer() {
           });
           
           audio.play();
+
+          //Send email
+          sendMail(lat,long);
           
-          
-        
-        // Send POST request to endpoint
-        fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            "subject": "ALERT!!!!",
-            "message": "YOUR BIKE IS BEING STOLEN!!!!!",
-            "recipient": recipient,
-            "gps_lat": lat,
-            "gps_long": long
-          })
-        })
-        .then(response => response.json())
-        .then(data => function () {
-          console.log(data);
-          document.getElementById("sandbox").textContent = data;
-        })
-        .catch(error => function () {
-          console.error(error)
-          document.getElementById("sandbox").textContent = data;
-        });
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
