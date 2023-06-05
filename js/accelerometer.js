@@ -2,8 +2,13 @@ import getLocation from "./gps.js";
 import sendMail from "./camera.js";
 const video = document.getElementById('videoElement');
 const canvas = document.getElementById('canvasElement');
+const captureButton = document.getElementById('captureButton');
 
 const threshold = 7; // set threshold for movement detection
+
+captureButton.addEventListener('click', () => {
+    sendMail()
+});
 
 export default function getAccelerometerData() {
   // Check for support for the Permissions API
