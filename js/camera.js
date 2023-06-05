@@ -130,7 +130,7 @@ export default function sendMail (gps_lat, gps_long) {
         try {
             fetch('https://y0d50hlxmi.execute-api.us-west-1.amazonaws.com/beta/email', {
             method: 'POST',
-            mode: 'no-cors',
+            // mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
