@@ -1,9 +1,15 @@
 import getLocation from "./gps.js";
 import sendMail from "./camera.js";
 
-// Set threshold for movement detection
+/**
+ * Set threshold for movement detection.
+ * @type {number}
+ */
 const threshold = 7; 
 
+/**
+ * Starts detecting accelerometer data and initiates the permission request if needed.
+ */
 export default function getAccelerometerData() {
   // Check for support for the Permissions API
   if ("permissions" in navigator) {
@@ -37,11 +43,12 @@ export default function getAccelerometerData() {
   }
 }
 
-// Function to start detecting accelerometer data
+/**
+ * Starts detecting accelerometer data.
+ */
 function startAccelerometer() {
   // Check for support for the Accelerometer API
   if ("Accelerometer" in window) {
-    
     var lat, long;
     getLocation()
     .then(location => {
@@ -74,36 +81,36 @@ function startAccelerometer() {
           ", Z: " +
           accelerometer.z.toFixed(2);
 
-          var audio = new Audio('./sounds/ucsdfight.mp3');
-          var loopCount = 0;
-          var isPlaying = false;
-          
-          audio.addEventListener('ended', function() {
-            if (!isPlaying) {
-              loopCount++;
-              if (loopCount < 5) {
-                isPlaying = true;
-                audio.play();
-              }
-            }
-          });
-          
-          audio.addEventListener('play', function() {
-            let state = localStorage.getItem("state");
-            if (state=="1") {
+        var audio = new Audio('./sounds/ucsdfight.mp3');
+        var loopCount = 0;
+        var isPlaying = false;
+        
+        audio.addEventListener('ended', function() {
+          if (!isPlaying) {
+            loopCount++;
+            if (loopCount < 5) {
               isPlaying = true;
-            }   
-          });
-          
-          audio.addEventListener('pause', function() {
-            isPlaying = false;
-          });
-          
-          audio.play();
+              audio.play();
+            }
+          }
+        });
+        
+        audio.addEventListener('play', function() {
+          let state = localStorage.getItem("state");
+          if (state=="1") {
+            isPlaying = true;
+          }   
+        });
+        
+        audio.addEventListener('pause', function() {
+          isPlaying = false;
+        });
+        
+        audio.play();
 
-          //Send email
-          sendMail(lat,long);
-          
+        // Send email
+        sendMail(lat, long);
+        
       } else {
         document.getElementById("accelerometer-data").textContent =
           "No movement detected.";
