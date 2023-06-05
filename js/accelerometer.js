@@ -6,9 +6,9 @@ const captureButton = document.getElementById('captureButton');
 
 const threshold = 7; // set threshold for movement detection
 
-captureButton.addEventListener('click', () => {
-    sendMail()
-});
+// captureButton.addEventListener('click', () => {
+//     sendMail()
+// });
 
 export default function getAccelerometerData() {
   // Check for support for the Permissions API

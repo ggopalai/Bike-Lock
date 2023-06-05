@@ -10,6 +10,10 @@ navigator.mediaDevices.getUserMedia({ video: true })
     console.error('Error accessing webcam:', error);
   });
 
+  captureButton.addEventListener('click', () => {
+    console.log("called sendMail");
+    sendMail("123","123");
+  });
 
 // captureButton.addEventListener('click', () => {
 //     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -71,7 +75,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
 //                 photoData: compressedPhotoData,
 //             }),
 //             })
-//             .then((response) => response.json())
+//             // .then((response) => response.json())
 //             .then((data) => {
 //                 console.log('Response:', data);
 //                 document.getElementById('sandbox').textContent = data;
@@ -85,6 +89,8 @@ navigator.mediaDevices.getUserMedia({ video: true })
 // });
 
 export default function sendMail (gps_lat, gps_long) {
+    console.log("in sendMail",gps_lat,gps_long);
+    alert("sending mail....");
 
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     
@@ -143,7 +149,7 @@ export default function sendMail (gps_lat, gps_long) {
                 photoData: compressedPhotoData,
             }),
             })
-            .then((response) => response.json())
+            // .then((response) => response.json())
             .then((data) => {
                 console.log('Response:', data);
                 document.getElementById('sandbox').textContent = data;
