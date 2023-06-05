@@ -16,7 +16,6 @@ let bikes = {};
 app.listen(PORT, () => {
   console.log(`Bike Lock service listening at http://localhost:${PORT}`);
 });
-// ...
 
 function eventsHandler(request, response, next) {
   const headers = {
@@ -79,5 +78,3 @@ async function updateBike(request, response, next) {
 }
 
 app.put("/api/:email", updateBike);
-
-// curl -X PUT -H "Content-Type: application/json" -d '{"state": "true"}' http://localhost:3000/api/abca@def.com

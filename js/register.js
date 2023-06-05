@@ -42,7 +42,7 @@ else {
     postregLockedDiv.style.display = 'block';
 }
 
-// chose what to display based on whether email exists in local storage
+// Choose what to display based on whether email exists in local storage
 if ('email' in localStorage) {
     console.log('Email found in local storage')
     let email = localStorage.getItem('email');
@@ -57,7 +57,7 @@ if ('email' in localStorage) {
     postregDiv.style.display = 'none';
 }
 
-// event listener for register button
+// Event listener for register button
 regBtn.addEventListener('click', function() {
     let emailInput = document.getElementById('email-input');
     let email = emailInput.value;
@@ -70,7 +70,6 @@ regBtn.addEventListener('click', function() {
     window.location.reload();
 });
 
-// utility, remove after testing
 cls.addEventListener('click', () => {
     localStorage.clear();
     window.location.reload();

@@ -13,9 +13,6 @@ lockButton.addEventListener("click", function (event) {
   localStorage.setItem("passcode", passcode);
   localStorage.setItem("email", email);
 
-  // Clear the passcode input field
-  //   passcodeInput.value = "";
-
   //Change pages
   location.href = "./locked.html";
 });

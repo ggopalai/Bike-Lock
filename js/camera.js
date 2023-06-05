@@ -1,6 +1,5 @@
 const video = document.getElementById('videoElement');
 const canvas = document.getElementById('canvasElement');
-// const captureButton = document.getElementById('captureButton');
 
 navigator.mediaDevices.getUserMedia({ video: true })
   .then((stream) => {
@@ -71,7 +70,6 @@ export default function sendMail (gps_lat, gps_long) {
                 photoData: compressedPhotoData,
             }),
             })
-            // .then((response) => response.json())
             .then((data) => {
                 console.log('Response:', data);
                 document.getElementById('sandbox').textContent = data;
@@ -81,5 +79,7 @@ export default function sendMail (gps_lat, gps_long) {
         }
         };
         reader.readAsDataURL(blob);
-    }, 'image/jpeg', 0.7); // Specify the image format and compression quality (0.7 means 70% quality)
+    }, 
+    // Specify the image format and compression quality (0.7 means 70% quality)
+    'image/jpeg', 0.7); 
 };
