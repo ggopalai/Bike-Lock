@@ -1,4 +1,4 @@
-# Stop The Steal: Bike Anti Theft
+# Stop The Steal: Bike Anti Theft Application
 
 ## License
 
@@ -87,7 +87,7 @@ The frontend is currently hosted on GitHub Pages. To replicate the deployment pr
     - Repeat the above steps for the `lambda_email_identity.py` code.
 
 2. Middleware Deployment - 
-    - The middleware code can be found in the server.js file located in the **./backend** folder.
+    - The middleware code can be found in the `server.js` file located in the **./backend** folder.
     - Clone the repository and follow these steps to run the Node.js server:
     - Run `npm install` to install the necessary dependencies.
     - Run `node server.js` to start the server.
@@ -95,6 +95,13 @@ The frontend is currently hosted on GitHub Pages. To replicate the deployment pr
 
 By following these steps, you can successfully deploy the frontend and backend components of the application.
 
+### Usage Instructions
+
+1. Open the client application on your phone. (found [here](https://github.com/ggopalai/sts-client))
+2. Enter your email address and click on the "Register" button.
+3. Open the bike application on your phone.
+4. You can control the state of the application from the client application by toggling between lock and unlock modes.
+5. Set the application to lock mode and place/strap the phone to the bike. On detecting motion, the application will play a loud alarm sound and send an email notification to the user's email address.
 
 ### Architecture Diagram
 
@@ -103,6 +110,8 @@ By following these steps, you can successfully deploy the frontend and backend c
 ### Development Cycle
 
 ![Development Cycle](images/lifecycle.jpg)
+
+The user application can be found [here](https://github.com/ggopalai/sts-client)
 
 ## Demo
 
