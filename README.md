@@ -51,7 +51,11 @@ Our research is focused on creating a highly effective anti-theft system for bic
 
 ### Oral Update
 
-[Slides of Oral Update](https://)
+[Slides of Oral Update](https://docs.google.com/presentation/d/1HdMciOye3AIjBfaNjye5iZ6R_Pq83rrog0GyfVk0dKU/edit?usp=sharing)
+
+### Final Oral Presentation
+
+[Slides of Final Oral Presentation](https://docs.google.com/presentation/d/1cpOK4Hzi9OU40IwVIeLjsUK0ZXadXqqfe92dDXVcQS0/edit?usp=sharing)
 
 
 ## Technical Documentation
