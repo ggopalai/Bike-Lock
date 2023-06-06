@@ -1,8 +1,14 @@
 # Stop The Steal: Bike Anti Theft
 
+## License
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## About The Project
 
-### Motivation
+### Motivation - Why Stop the Steal?
 1. **Tonnes of e-waste being generated in the form of phones**: The rapid advancement of technology and consumer demand for new devices contribute to the massive generation of electronic waste (e-waste). E-waste poses environmental challenges due to hazardous materials contained in electronic devices. By repurposing old phones as anti-theft devices, we can give them a second life and reduce the amount of e-waste sent to landfills. This approach aligns with the principles of sustainability and responsible consumption, promoting the reuse of existing resources.
 
 2. **UCSD's bike theft problem**: Bike theft has become a significant issue on the UC San Diego (UCSD) campus, with a noticeable increase in recent years. Bike theft not only leads to financial loss for individuals but also disrupts campus life and affects the overall safety and security of the campus community. By utilizing old phones as anti-theft devices, we can develop a cost-effective solution to address this problem. These devices can serve as effective deterrents and help track stolen bikes, increasing the chances of recovery and discouraging potential thieves. Implementing such a solution demonstrates a commitment to improving campus security and enhancing the overall experience for students, faculty, and staff at UCSD.
@@ -106,7 +112,7 @@ By following these steps, you can successfully deploy the frontend and backend c
 
 ### Version 2 Demonstration
 
-[Link to Demo](https://www.youtube.com/watch?v=NOQyXAkkuBU)
+[Link to Demo](https://www.youtube.com/shorts/88xI9h5lxpY)
 
 ### Final Project Video
 
