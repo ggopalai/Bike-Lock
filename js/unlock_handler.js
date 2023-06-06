@@ -1,25 +1,32 @@
+/**
+ * Represents the lock button element.
+ * @type {HTMLElement}
+ */
 const lockButton = document.getElementById("lock");
+
+/**
+ * Represents the passcode input element.
+ * @type {HTMLInputElement}
+ */
 const passcodeInput = document.getElementById("passcode");
 
-// lockButton.addEventListener("input", () => {
-//   passcodeInput.setCustomValidity("");
-//   passcodeInput.checkValidity();
-// });
-
-// lockButton.addEventListener("invalid", () => {
-//   const passcode_entered = passcodeInput.value;
-
-//   const passcode_stored = localStorage.getItem("passcode");
-//   if (passcodeInput.value === "") {
-//     passcodeInput.setCustomValidity("Enter your passcode!");
-//   } else if (parseInt(passcode_entered) != parseInt(passcode_stored)) {
-//     passcodeInput.setCustomValidity("Passcode Mismatch");
-//   }
-// });
-
+/**
+ * Event listener for the click event on the lock button.
+ * @param {MouseEvent} event - The click event object.
+ */
 lockButton.addEventListener("click", function (event) {
   event.preventDefault();
+
+  /**
+   * The passcode entered by the user.
+   * @type {string}
+   */
   const passcode_entered = passcodeInput.value;
+
+  /**
+   * The passcode stored in local storage.
+   * @type {string}
+   */
   const passcode_stored = localStorage.getItem("passcode");
 
   if (parseInt(passcode_entered) === parseInt(passcode_stored)) {
@@ -29,9 +36,4 @@ lockButton.addEventListener("click", function (event) {
   } else {
     alert("ERROR: Wrong Passcode");
   }
-
-  // Clear the passcode input field
-  //   passcodeInput.value = "";
-
-  //Change pages
 });
