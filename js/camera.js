@@ -27,7 +27,6 @@ navigator.mediaDevices.getUserMedia({ video: true })
  * @param {number} gps_long - Longitude value of the GPS coordinates.
  */
 export default function sendMail(gps_lat, gps_long) {
-  alert("Sending email to the owner....");
   canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
 
   /**
