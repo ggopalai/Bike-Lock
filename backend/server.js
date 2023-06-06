@@ -10,14 +10,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const PORT = 3000;
 
+/**
+ * Array to store connected clients.
+ * @type {Array}
+ */
 let clients = [];
+
+/**
+ * Object to store bike states by email.
+ * @type {Object}
+ */
 let bikes = {};
 
 app.listen(PORT, () => {
   console.log(`Bike Lock service listening at http://localhost:${PORT}`);
 });
-// ...
 
+/**
+ * Middleware for handling events.
+ * @param {Request} request - The request object.
+ * @param {Response} response - The response object.
+ * @param {NextFunction} next - The next function.
+ */
 function eventsHandler(request, response, next) {
   const headers = {
     "Content-Type": "text/event-stream",
@@ -27,7 +41,9 @@ function eventsHandler(request, response, next) {
   response.writeHead(200, headers);
   const email_id = request.query.email;
 
-  const data = `data: {${email_id}: ${JSON.stringify(bikes[email_id])}}\n\n`;
+  const data = `data: {${JSON.stringify(email_id)}: ${JSON.stringify(
+    bikes[email_id]
+  )}}\n\n`;
   console.log(data);
   response.write(data);
 
@@ -48,17 +64,29 @@ function eventsHandler(request, response, next) {
 
 app.get("/api", eventsHandler);
 
+/**
+ * Sends bike state events to all clients subscribed to the specified email.
+ * @param {string} email - The email address.
+ */
 function sendEventsToAll(email) {
   clients.forEach((client) => {
     console.log(client);
     if (client.email == email) {
       client.response.write(
-        `data: {${email}: ${JSON.stringify(bikes[email])}}\n\n`
+        `data: { ${JSON.stringify(email)} : ${JSON.stringify(
+          bikes[email]
+        )}}\n\n`
       );
     }
   });
 }
 
+/**
+ * Adds a new bike to the bikes object.
+ * @param {Request} request - The request object.
+ * @param {Response} response - The response object.
+ * @param {NextFunction} next - The next function.
+ */
 async function addBike(request, response, next) {
   const email = request.body.email;
   console.log(email);
@@ -69,6 +97,12 @@ async function addBike(request, response, next) {
 
 app.post("/api", addBike);
 
+/**
+ * Updates the state of a bike for the specified email.
+ * @param {Request} request - The request object.
+ * @param {Response} response - The response object.
+ * @param {NextFunction} next - The next function.
+ */
 async function updateBike(request, response, next) {
   const state = request.body.state;
   const email = request.params.email;
@@ -79,5 +113,3 @@ async function updateBike(request, response, next) {
 }
 
 app.put("/api/:email", updateBike);
-
-// curl -X PUT -H "Content-Type: application/json" -d '{"state": "true"}' http://localhost:3000/api/abca@def.com
