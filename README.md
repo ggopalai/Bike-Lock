@@ -23,12 +23,13 @@ Our research is focused on creating a highly effective anti-theft system for bic
 
 ---
 
-### Deployment
+### App Deployments
 
 [Bike App](https://akshayprabhu200.github.io/Bike-Lock/)
 
 [Client App](https://ggopalai.github.io/sts-client/)
 
+---
 
 ### Team Members
 - Gagan Gopalaiah
@@ -55,7 +56,6 @@ Our research is focused on creating a highly effective anti-theft system for bic
 [PDF Version](https://github.com/akshayprabhu200/Bike-Lock/blob/main/reports/Milestone_Report.pdf)
 
 
-
 ### Oral Update
 
 [Slides of Oral Update](https://docs.google.com/presentation/d/1HdMciOye3AIjBfaNjye5iZ6R_Pq83rrog0GyfVk0dKU/edit?usp=sharing)
@@ -64,16 +64,9 @@ Our research is focused on creating a highly effective anti-theft system for bic
 
 [Slides of Final Oral Presentation](https://docs.google.com/presentation/d/1cpOK4Hzi9OU40IwVIeLjsUK0ZXadXqqfe92dDXVcQS0/edit?usp=sharing)
 
+---
 
 ## Technical Documentation
-
-### JSDoc
-
-We have used JSDoc comments to document our project. We used these comments to provide clear explanations and descriptions for variables, functions, and middleware. These comments serve as a useful reference for the team members to understand the purpose and functionality of different sections of the code, making it easier for us to maintain and collaborate on the project.
-
-![JSDoc comments in code](images/jsdoc_code.png)
-
-![JSDoc output file](images/jsdoc_file.png)
 
 
 ### Repository Organization
@@ -123,13 +116,25 @@ The frontend is currently hosted on GitHub Pages. To replicate the deployment pr
 
 By following these steps, you can successfully deploy the frontend and backend components of the application.
 
+---
+
 ### Usage Instructions
 
-1. Open the client application on your phone. (found [here](https://github.com/ggopalai/sts-client))
+1. Open the client application on your phone. (repo found [here](https://github.com/ggopalai/sts-client))
 2. Enter your email address and click on the "Register" button.
 3. Open the bike application on your phone.
 4. You can control the state of the application from the client application by toggling between lock and unlock modes.
 5. Set the application to lock mode and place/strap the phone to the bike. On detecting motion, the application will play a loud alarm sound and send an email notification to the user's email address.
+
+---
+
+### JSDoc
+
+We have used JSDoc comments to document our project. We used these comments to provide clear explanations and descriptions for variables, functions, and middleware. These comments serve as a useful reference for the team members to understand the purpose and functionality of different sections of the code, making it easier for us to maintain and collaborate on the project.
+
+![JSDoc comments in code](images/jsdoc_code.png)
+
+![JSDoc output file](images/jsdoc_file.png)
 
 ---
 
