@@ -32,20 +32,20 @@ Our research is focused on creating a highly effective anti-theft system for bic
 
 ### Elevator Pitch
 
-[Slides of Elevator Pitch](https://)
+[Slides of Elevator Pitch](https://docs.google.com/presentation/d/11PmArEGlnLwluVoWVvnPCeZX2Du1wQH2pCDIwUqosQI/edit?usp=sharing)
 
 ### Project Charter
 
-[Wiki Page on Project Charter](https://)
+[Wiki Page on Project Charter](https://github.com/akshayprabhu200/Bike-Lock/wiki/Project-Charter)
 
-[PDF Version](https://)
+[PDF Version](https://github.com/akshayprabhu200/Bike-Lock/blob/main/reports/Project_Charter.pdf)
 
 
 ### Milestone Report
 
-[Wiki Page on Milestone Progress](https://)
+[Wiki Page on Milestone Progress](https://github.com/akshayprabhu200/Bike-Lock/wiki/Milestone-Report)
 
-[PDF Version](https://)
+[PDF Version](https://github.com/akshayprabhu200/Bike-Lock/blob/main/reports/Milestone_Report.pdf)
 
 
 
@@ -140,3 +140,8 @@ TBA: To be added by 6/12/2023
 ---
 
 ## Future Work
+- Conversion to a native application
+- Upgrading the location coordinates with Google Maps integration 
+- Multiple bike tracking through a single application
+- Integration with Bike Accessories
+- Analytics and Reporting
