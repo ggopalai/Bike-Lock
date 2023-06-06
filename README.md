@@ -69,7 +69,7 @@ Our research is focused on creating a highly effective anti-theft system for bic
 
 ### JSDoc
 
-We have used JSDoc comments to document the different parts of the project. We used these comments to provide clear explanations and descriptions for variables, functions, and middleware. These comments serve as a useful reference for the team members to understand the purpose and functionality of different sections of the code, making it easier for us to maintain and collaborate on the project.
+We have used JSDoc comments to document our project. We used these comments to provide clear explanations and descriptions for variables, functions, and middleware. These comments serve as a useful reference for the team members to understand the purpose and functionality of different sections of the code, making it easier for us to maintain and collaborate on the project.
 
 ![JSDoc comments in code](images/jsdoc_code.jpg)
 
