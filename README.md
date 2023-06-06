@@ -73,7 +73,7 @@ We have used JSDoc comments to document our project. We used these comments to p
 
 ![JSDoc comments in code](images/jsdoc_code.png)
 
-![JSDoc output file](images/jsdoc_file.jpg)
+![JSDoc output file](images/jsdoc_file.png)
 
 
 ### Repository Organization
