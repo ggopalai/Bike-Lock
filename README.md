@@ -6,6 +6,8 @@
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+---
+
 ## About The Project
 
 ### Motivation - Why Stop the Steal?
@@ -13,15 +15,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 2. **UCSD's bike theft problem**: Bike theft has become a significant issue on the UC San Diego (UCSD) campus, with a noticeable increase in recent years. Bike theft not only leads to financial loss for individuals but also disrupts campus life and affects the overall safety and security of the campus community. By utilizing old phones as anti-theft devices, we can develop a cost-effective solution to address this problem. These devices can serve as effective deterrents and help track stolen bikes, increasing the chances of recovery and discouraging potential thieves. Implementing such a solution demonstrates a commitment to improving campus security and enhancing the overall experience for students, faculty, and staff at UCSD.
 
+---
+
 ### Abstract
 
 Our research is focused on creating a highly effective anti-theft system for bicycles that leverages the advanced capabilities of old smartphones. The system operates in two modes: locked and unlocked. In unlocked mode, the user has complete freedom to use their bike without any limitations or notifications. However, when the user engages the lock mode, the smartphone device, equipped with sensors such as GPS and accelerometers, will begin monitoring the bike's location and movements. If the system detects any unauthorized movement, such as a thief attempting to steal the bike, a loud alarm will sound to alert nearby people. Simultaneously, the system will send a notification to the user's phone indicating the theft attempt and providing GPS coordinates of the bike's location. This will enable the user to contact the authorities and recover their stolen bike.
 
+---
 
 ### Team Members
 - Gagan Gopalaiah
 - Akshay Prabhu
 - Grishma Gurbani
+
+---
 
 ### Elevator Pitch
 
@@ -65,6 +72,7 @@ The repository is organized as follows:
 
 **./index.html**: Serves as the entry point for the bike application.
 
+---
 
 ### Deployment Steps
 
@@ -103,6 +111,8 @@ By following these steps, you can successfully deploy the frontend and backend c
 4. You can control the state of the application from the client application by toggling between lock and unlock modes.
 5. Set the application to lock mode and place/strap the phone to the bike. On detecting motion, the application will play a loud alarm sound and send an email notification to the user's email address.
 
+---
+
 ### Architecture Diagram
 
 ![architecture diagram](images/arch_diagram.jpeg)
@@ -111,7 +121,7 @@ By following these steps, you can successfully deploy the frontend and backend c
 
 ![Development Cycle](images/lifecycle.jpg)
 
-The user application can be found [here](https://github.com/ggopalai/sts-client)
+---
 
 ## Demo
 
@@ -126,5 +136,7 @@ The user application can be found [here](https://github.com/ggopalai/sts-client)
 ### Final Project Video
 
 TBA: To be added by 6/12/2023
+
+---
 
 ## Future Work
