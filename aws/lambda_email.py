@@ -5,7 +5,7 @@ import json
 ses = boto3.client('ses', region_name='us-west-1')
 
 # Function to send an email using SES
-def send_mail(subject, message, recipient):
+def send_mail(subject, message, recipient, photo_data, latitude, longitude):
     # Define email parameters
     email_params = {
         'Destination': {
@@ -13,7 +13,9 @@ def send_mail(subject, message, recipient):
         },
         'Message': {
             'Body': {
-                'Text': {'Data': message},
+                'Html': {
+                    'Data': f'<html><body><h1>{subject}</h1><p>{message}</p><p>Latitude: {latitude}</p><p>Longitude: {longitude}</p><img src="{photo_data}"></body></html>'
+                }
             },
             'Subject': {'Data': subject},
         },
@@ -31,21 +33,31 @@ def send_mail(subject, message, recipient):
 
 # Lambda function handler
 def handler(event, context):
-    # Get values for the subject, message, recipient, and GPS coordinates from the input event
+    # Get values for the subject, message, recipient, GPS coordinates, and photo data from the input event
     subject = event['subject']
     message = event['message']
     recipient = event['recipient']
-    lat = event['gps_lat']
-    lon = event['gps_long']
+    latitude = event['gps_lat']
+    longitude = event['gps_long']
+    photo_data = event['photoData']
+    print(photo_data)
 
     # Add the GPS coordinates to the message
-    message = f'{message} \n The bike is currently at Latitude {lat} and Longitude {lon}'
+    message = f'{message} \n The bike is currently at Latitude {latitude} and Longitude {longitude}'
 
-    # Send the email
-    send_mail(subject, message, recipient)
+    # Send the email with the photo and coordinates embedded
+    send_mail(subject, message, recipient, photo_data, latitude, longitude)
 
-    # Return a response indicating that the email was sent successfully
+    # Define the response headers
+    headers = {
+        'Access-Control-Allow-Origin': 'https://ggopalai.github.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST',
+    }
+
+    # Return a response indicating that the email was sent successfully, along with the headers
     return {
         'statusCode': 200,
+        'headers': headers,
         'body': json.dumps('Email sent successfully!')
     }
