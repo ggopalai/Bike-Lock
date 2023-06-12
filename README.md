@@ -140,7 +140,7 @@ We have used JSDoc comments to document our project. We used these comments to p
 
 ### Architecture Diagram
 
-![architecture diagram](images/arch_diagram.jpeg)
+![architecture diagram](images/arch_diagram.png)
 
 ### Development Cycle
 
