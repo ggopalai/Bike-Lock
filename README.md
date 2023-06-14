@@ -120,6 +120,16 @@ By following these steps, you can successfully deploy the frontend and backend c
 
 ### Usage Instructions
 
+0. Prequisite - 
+   1. - Make a curl request to the AWS Lambda function `lambda_email_identity.py` to register the email address you want to use to receive notifications. The request should be of the form: 
+   ```
+   curl --location --request POST 'https://igqz8n9d94.execute-api.us-west-1.amazonaws.com/dev/identity' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+    "email_identity": "<email>"
+    }'
+    ```
+    2. This will send an email to the specified email address. Click on the link in the email to verify your email address. 
 1. Open the client application on your phone. (repo found [here](https://github.com/ggopalai/sts-client))
 2. Enter your email address and click on the "Register" button.
 3. Open the bike application on your phone.
